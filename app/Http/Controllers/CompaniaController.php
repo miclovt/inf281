@@ -22,7 +22,7 @@ class CompaniaController extends Controller
             'Genero'=>$validatedata['Genero'],
             'IdCuartel'=>$validatedata['IdCuartel']
         ]);
-        return response()->json();
+        echo "<script>window.location='http://localhost:8000/cuarteles';</script>";
     }public function getCompaniaSinInstru($IdCuartel){
         return Compania::select('IdCompania')->where('IdCuartel',$IdCuartel)->where('TieneI',0)->get()->first();
     }public function setTieneI($IdCompania){
@@ -33,5 +33,9 @@ class CompaniaController extends Controller
     }public function getcompaniasxcuartel($IdCuartel){
         $data=Compania::where('IdCuartel',$IdCuartel)->get();
         return $data->toJson();
+    }public function updatenom(Request $request){
+        Compania::where('IdCompania',$request->get('IdCompania'))->update([
+            'NomCompania'=>$request->get('NomCompania'),
+        ]);
     }
 }

@@ -1,0 +1,89 @@
+
+.todo {
+    position: relative;
+    left: 10%;
+    padding-top: 5%;
+    
+  }
+  .container0 {
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-size: 36px;
+    left: 30%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  }
+  .container1 {
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-size: 36px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  }
+  .container2 {
+    position: absolute;
+    text-align: center;
+    color: white;
+    left: 60%;
+    font-size: 36px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  }
+
+  
+  .centered0 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .centered2 {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .centered1 {
+    color: white;
+    position: absolute;
+    top: 60%;
+    left: 5%;
+    max-width: 90%;
+    
+    
+  }
+  .fulll {
+    position: absolute;
+    background-color: black;
+    width: 100%;
+    height: 500px;
+    opacity:0.6 ;
+    transform: translate(0%, -100%);
+    
+  }.fulll1 {
+    position: absolute;
+    background-color: black;
+    width: 100%;
+    height: 300px;
+    opacity:0.6 ;
+    transform: translate(0%, -100%);
+    
+  }
+  .imgd{
+    width: 300px;
+    height: 300px;
+    
+  }
+  .imgd1{
+    
+   
+  }
+  .nombre{
+    text-align: center;
+    font-size: 65px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  .contenedores{
+    transform: translate(-50%,-50%);
+    font-size: 32px;
+  }

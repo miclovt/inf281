@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 //import MenuIcon from '@material-ui/icons/Menu';
 import Login from './Login';
+import Login1 from './Login1';
 
 const styles = {
   root: {
@@ -21,9 +22,23 @@ const styles = {
     marginRight: 10,
   },
 };
-
+var sw=1;
+function deflog(){
+  
+  var vec=window.location.pathname.split('/');
+  console.log(vec[1]=='singin');
+  if(vec[1]=='' ){
+    sw=0;
+  }if(vec[1]=='singin'){
+    sw=0;
+  }if(vec[1]=='reserva'){
+    sw=0;
+  }
+  console.log(sw);
+}
 function ButtonAppBar(props) {
   const { classes } = props;
+  deflog();
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -34,13 +49,21 @@ function ButtonAppBar(props) {
           <Typography variant="h7" color="inherit" className={classes.grow}>
             Ministerio de Defensa
           </Typography>
-          <Login>
-          <IconButton >
-            <img src="https://static1.squarespace.com/static/5679179bdf40f3876bad558b/t/5b504c738a922dd648d8939c/1531920044890/profile_icon.png" width="50px" height="50px"></img>
-            
-            
-          </IconButton>
-          </Login>
+          {
+            sw==0 ?(
+              <Login>
+              <IconButton >
+                <img src="https://static1.squarespace.com/static/5679179bdf40f3876bad558b/t/5b504c738a922dd648d8939c/1531920044890/profile_icon.png" width="50px" height="50px"></img>
+                
+                
+              </IconButton>
+              </Login>
+            ):(
+              <Login1>
+              
+              </Login1>
+            )
+          }
         </Toolbar>
       </AppBar>
     </div>

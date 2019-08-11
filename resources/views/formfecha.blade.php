@@ -15,7 +15,7 @@
     <body style="background-image: url(/images/fondoall.jpg)">
 
         <header id="header"></header>
-        <div id="formcuartel"></div>
+        <div id="formfecha"></div>
         <script src="/js/app.js"></script>
     </body>
 </html>

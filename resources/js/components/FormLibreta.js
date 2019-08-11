@@ -9,16 +9,27 @@ export default class FormLibreta extends Component {
 constructor () {
     super()
     this.mostrarentag=this.mostrarentag.bind(this);
+    this.linkear=this.linkear.bind(this);
     this.state = {
         ci:'',
         nom:'',
         app:'',
         apm:'',
+        url:'',
+        estado:0
     }
    
 }
  componentDidMount () {
     //console.log(document.getElementById("Departamento").options[document.getElementById("Departamento").selectedIndex].text);
+    axios.get(`/api/url/${window.location.pathname.split('/')[4]}`).then(response => {
+        //console.log(response.data);
+        this.setState({
+            url: response.data,
+            
+        })
+        
+    });
     axios.get(`/api/datasoldado/${window.location.pathname.split('/')[3]}`).then(response => {
         console.log(response.data);
         this.setState({
@@ -26,9 +37,15 @@ constructor () {
             nom: response.data[0]['Nombre'],
             app:response.data[0]['ApPaterno'],
             apm:response.data[0]['ApMaterno'],
-            
+            estado:response.data[0]['Estado'],
         })
-    })  
+        if(response.data[0]['Estado']==1){
+            window.location="http://localhost:8000/instru/listasis/"+this.state.url;
+        }
+    });
+    
+    //console.log(this.state.estado);
+
 }
     mostrarentag(e){
         //console.log(document.getElementById("img").value);
@@ -43,6 +60,10 @@ constructor () {
             img.src=e.target.result;
             
         };
+    }
+    linkear(e){
+        
+        window.location="http://localhost:8000/";
     }
 
 
@@ -159,9 +180,11 @@ constructor () {
                                     </table>
                                         </tr>
                                     </table>
-                                    <Button variant="contained" color="primary" type="submit" >
-                                        REALIZAR LIBRETA
+                                    
+                                    <Button onClick={this.linkear} variant="contained" color="primary"  type="submit"  >
+                                    REALIZAR LIBRETA
                                     </Button>
+                                    
                                 </form>
                             </div>
                         </div>

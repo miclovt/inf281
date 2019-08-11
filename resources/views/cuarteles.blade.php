@@ -12,7 +12,7 @@
         <!-- Styles -->
         <link rel="stylesheet" type="text/css" href="/css/app.css">   
     </head>
-    <body>
+    <body style="background-image: url(/images/fondoall.jpg)">
 
         <header id="header"></header>
         <div id="cuarteles"></div>

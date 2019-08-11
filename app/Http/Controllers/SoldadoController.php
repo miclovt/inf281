@@ -89,5 +89,23 @@ class SoldadoController extends Controller
         $soldado=Soldado::where('CI',$ci)->update([
             'Grado'=>$Grado
         ]);
+    }public function login(Request $request){
+        if(Soldado::where('CI',$request->get('CI'))->where('ContraSoldado',$request->get('ContraSoldado'))->first()!=null){
+            $tipo=Soldado::where('CI',$request->get('CI'))->where('ContraSoldado',$request->get('ContraSoldado'))->first()->Estado;
+            $data=array('Estado'=>$tipo,'Res'=>'true');
+            return json_encode($data);
+        }
+        return json_encode(array('Res'=>'false'));
+    }public function getalldataoftoday(Request $request){
+        $hoy=Carbon::now()->utcoffset(-240)->toDateString();
+        $data=DB::select('select p.Nombre,p.ApPaterno,p.ApMaterno,p.FechaNac,s.Grado,s.Tarea,a.Asistio,cu.Nombre nomcuartel,co.NomCompania nomcompania,a.Asistio from persona p,soldado s,asistencia a,compania co,cuartel cu where s.IdCompania=co.IdCompania and s.IdCuartel=cu.IdCuartel and s.CI = p.CI and p.CI=a.CI  and p.CI= ? and a.Fecha= ?', [$request->get('CI'),$hoy]);
+        return json_encode($data);
     }
+    
+    public function getalldata(Request $request){
+        //$hoy=Carbon::now()->utcoffset(-240)->toDateString();
+        $data=DB::select('select p.*,s.*,l.*,cu.Nombre Regimiento,co.NomCompania Compania from persona p,soldado s,libreta l,cuartel cu,compania co where s.CI = p.CI and cu.IdCuartel=s.IdCuartel and co.IdCompania=s.IdCompania  and p.CI=l.CiSoldado and p.CI= ? LIMIT 1', [$request->get('CI')]);
+        return json_encode($data);
+    }
+    
 }

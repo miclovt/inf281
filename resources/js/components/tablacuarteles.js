@@ -57,7 +57,8 @@ const rows = [
   { id: 'direccion', numeric: false, disablePadding: false, label: 'DIRECCION' },
   { id: 'tipo', numeric: false, disablePadding: false, label: 'TIPO' },
   { id: '', numeric: false, disablePadding: false, label: '' },
-  { id: '', numeric: false, disablePadding: false, label: '' }
+  { id: '', numeric: false, disablePadding: false, label: '' },
+  
 ];
 
 function EnhancedTableHead(props) {
@@ -127,7 +128,7 @@ const useToolbarStyles = makeStyles(theme => ({
   },
   actions: {
     color: theme.palette.text.primary,
-    width: '250px',
+    width: '450px',
   },
   title: {
     flex: '0 0 auto',
@@ -139,6 +140,10 @@ const EnhancedTableToolbar = props => {
   const { numSelected } = props;
   function crear(event){
     window.location.href = "http://localhost:8000/admi/addcuartel";
+  }function nuevafecha(event){
+    window.location.href = "http://localhost:8000/fechaini";
+  }function nuevoinstru(event){
+    window.location.href = "http://localhost:8000/admi/addinstru";
   }
   return (
     <Toolbar
@@ -159,9 +164,27 @@ const EnhancedTableToolbar = props => {
       </div>
       <div className={classes.spacer} />
       <div className={classes.actions} >
-        <Button variant="contained" color="primary" onClick={event=>crear(event)}>
+      <table>
+        <tr>
+        <td><Button variant="contained" color="primary" onClick={event=>nuevoinstru(event)}>
+          AÑADIR INSTRUCTOR
+        </Button></td>
+        <td>    </td>
+        <td>    </td>
+        <td>    </td> 
+          <td><Button variant="contained" color="primary" onClick={event=>nuevafecha(event)}>
+          FECHA DE INSCRIPCION
+        </Button></td>
+        <td>    </td>
+        <td>    </td>
+        <td>    </td> 
+        <td><Button variant="contained" color="primary" onClick={event=>crear(event)}>
           AÑADIR CUARTEL
-        </Button>
+        </Button></td>
+        </tr>
+      </table>
+      
+        
       </div>
     </Toolbar>
   );
@@ -247,8 +270,11 @@ function EnhancedTable() {
     setSelected(newSelected);*/
     window.location.href = "http://localhost:8000/companias/"+id;
     console.log(id);
+  }function deletes(event,id){
+    
   }
 
+  
   function handleChangePage(event, newPage) {
     setPage(newPage);
   }
@@ -310,11 +336,7 @@ function EnhancedTable() {
                       cupos
                     </Button>
                     </TableCell>
-                    <TableCell>
-                    <IconButton href="http://localhost:8000" aria-label="Delete" className={classes.margin}>
-                      <DeleteIcon />
-                    </IconButton>
-                    </TableCell>
+                    
                   </TableRow>
                 );
               })}

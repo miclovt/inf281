@@ -13,7 +13,7 @@
         <!-- Styles -->
         <link rel="stylesheet" type="text/css" href="/css/form.css">
     </head>
-    <body>
+    <body style="background-image: url(/images/fondoall.jpg)">
 
         <header id="header"></header>
         <div id="formcupos"></div>

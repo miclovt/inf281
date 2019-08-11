@@ -32,6 +32,7 @@ class InscribirController extends Controller
         $sol=new SoldadoController;
         $per->addPersonaHabilitada($requestpersona);
         $sol->addSoldadoRegistro($requestsoldado);
+        echo "<script>window.location='http://localhost:8000/';</script>";
     }public function addInstrufull(Request $request){
         $requestsoldado=new Request;
         $requestpersona=new Request;
@@ -62,6 +63,7 @@ class InscribirController extends Controller
         $sol=new InstructorController;
         $per->addpersona($requestpersona);
         $sol->addInstructor($requestsoldado);
+        echo "<script>window.location='http://localhost:8000/';</script>";
     }
 
 }

@@ -388,9 +388,7 @@ function EnhancedTable() {
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
       <center>
-      <Button  variant="contained" color="primary" onClick={event => guardardata(event)}>
-          GUARDAR CAMBIOS
-      </Button>
+      
       </center>
       
     </Paper>

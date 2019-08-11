@@ -10,6 +10,7 @@ import withMobileDialog from '@material-ui/core/withMobileDialog';
 import TextField from '@material-ui/core/TextField';
 
 function ResponsiveDialog(props) {
+  const [logged,setlogged]=React.useState(false);
   const { fullScreen } = props;
   const [open, setOpen] = React.useState(false);
 
@@ -52,7 +53,7 @@ function ResponsiveDialog(props) {
             id="name"
             label="Contraseña"
             name="ContraInstructor"
-            type="text"
+            type="password"
             fullWidth
           />
           <DialogContentText>

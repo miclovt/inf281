@@ -15,10 +15,12 @@ import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
+import Icon from '@material-ui/core/Icon';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 import axios from 'axios';
+import Fab from '@material-ui/core/Fab';
 import Button from '@material-ui/core/Button';
 
 function createData(idcompania,nombrecompania,genero) {
@@ -52,6 +54,7 @@ function getSorting(order, orderBy) {
 const rows = [
   { id: 'nomcompania', numeric: false, disablePadding: false, label: 'NOMBRE' },
   { id: 'genero', numeric: false, disablePadding: false, label: 'GENERO' },
+  { id: '', numeric: false, disablePadding: false, label: '' },
 ];
 
 function EnhancedTableHead(props) {
@@ -254,9 +257,24 @@ function EnhancedTable() {
   function handleChangeRowsPerPage(event) {
     setRowsPerPage(event.target.value);
   }
-  function funcion(event,ci){}
+  function funcion(event,id){
+    if (event.keyCode == 13) {
+      document.getElementById(id).contentEditable=false;
+    }else{
+    var data={
+      IdCompania:id,
+      NomCompania:document.getElementById(id+"").innerText,
+    };axios.put('/api/updatenom/',data);}
+  }
   //function funcion1(event){document.getElementById('nc').contentEditable=false;console.log('desca');}
-  function editable(event){document.getElementById('nc').contentEditable=true;}
+  function editable(event,id){
+    
+    document.getElementById(id).contentEditable=true;
+  }
+  function enter(event,id){
+    
+  }
+  document.addEventListener
   const isSelected = id => selected.indexOf(id) !== -1;
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
@@ -291,8 +309,8 @@ function EnhancedTable() {
                     selected={isItemSelected}
                   >
                    
-                    <TableCell component="th" scope="row" padding="checkbox"
-                     //onClick={event=>editable(event)} onKeyUp={event=>funcion(event,n.ci)} 
+                    <TableCell id={n.idcompania} component="th" scope="row" padding="checkbox"
+                      onKeyDown={event=>funcion(event,n.idcompania) } 
                       >
                       {n.nombrecompania}
                     </TableCell>
@@ -302,6 +320,15 @@ function EnhancedTable() {
                         ) : (
                         "MASCULINO"
                         )}
+                    </TableCell>
+                    <TableCell >
+                    
+                    
+                      <IconButton onClick={event=>editable(event,n.idcompania)}>									
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                      </IconButton>
+                    
+                    
                     </TableCell>
                   </TableRow>
                 );

@@ -17,13 +17,16 @@ class DiaController extends Controller
         ]);
         $dia1=Carbon::create($validatedata['Fecha']);
         for ($i=1; $i <=15 ; $i++) { 
-            $dia=Dia::where('IdDia',$i)->update(array('Fecha' => $dia1->isoFormat('DD-MM-YYYY') ));
+            $dia=Dia::where('IdDia',$i)->update(array('Fecha' => $dia1->toDateString() ));
             if($i%5==0){
                 $dia1->add(2,'day');    
             }
             $dia1->add(1,'day');
         }CuarxHora::where('Lleno',1)->update(array('Lleno'=>0));
-        return response()->json();
+        echo "<script>window.location='http://localhost:8000/cuarteles';</script>";
+        
+        //return response()->json();
+
     }
 
 }

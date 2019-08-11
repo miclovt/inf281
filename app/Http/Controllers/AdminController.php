@@ -38,6 +38,7 @@ class AdminController extends Controller
                     $request1=new Request;
                     $request1->replace($params);
                     $instru->addInstructorxadmin($request1);
+                    $compania->setTieneI($IdCompania);
                 }else{
                     echo "<script type='text/javascript'>alert('no hay mas cupos para instructores') ;</script>";
                 }

@@ -21,7 +21,6 @@ import Header from  './components/Header';
 import Formcuartel from  './components/FormCuartel';
 import FormInstruAdmi from  './components/FormInstruAdmi';
 import FormCompania from  './components/FormCompania';
-import Signinstructor from  './components/signinstructor';
 import Tp from './components/tp';
 import Tla from './components/tla';
 import Tc from './components/tc';
@@ -30,16 +29,22 @@ import Tcomp from './components/tcomp';
 import Signin from './components/signin';
 import FormuLibreta from './components/FormLibreta';
 import Formucupos from './components/Formcupos';
-
+import Imagenesindex from './components/Imagenesindex';
+//import Opciones from './components/Opciones';
+import Opciones from './components/Opciones';
+import FormFecha from './components/FormFecha';
+import Boton from './components/Botonres';
 
 
 ReactDOM.render(<Header />, document.getElementById('header'));
+
 ReactDOM.render(<Tc />,document.getElementById("cuarteles"));
 ReactDOM.render(<Tcomp />,document.getElementById("companias"));
 ReactDOM.render(<Tp />,document.getElementById("root"));
 ReactDOM.render(<Tss />,document.getElementById("soldadosincompa"));
 ReactDOM.render(<Tla />,document.getElementById("listasistencia"));
 ReactDOM.render(<Signin />,document.getElementById("signin"));
+ReactDOM.render(<Imagenesindex />,document.getElementById("Imagenesindex"));
 
 
 
@@ -50,4 +55,7 @@ ReactDOM.render(<FormCompania />, document.getElementById('formCompania'));
 ReactDOM.render(<Formulario />, document.getElementById('formularioreserva'));
 ReactDOM.render(<FormuLibreta />, document.getElementById('formLibreta'));
 ReactDOM.render(<Formucupos />, document.getElementById('formcupos'));
+ReactDOM.render(<Opciones />,document.getElementById('opciones'));
+ReactDOM.render(<FormFecha />,document.getElementById('formfecha'));
+ReactDOM.render(<Boton />,document.getElementById('boton'));
  

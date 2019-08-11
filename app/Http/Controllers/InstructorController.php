@@ -80,6 +80,6 @@ class InstructorController extends Controller
     }
     public function getcuarcomp($ci){
         $data=Instructor::select('IdCompania','IdCuartel')->where('CI',$ci)->first();
-        return $data['Idcuartel']+'/'+$data['IdCompania'];
+        return $data['IdCuartel'].'/'.$data['IdCompania'];
     }
 }

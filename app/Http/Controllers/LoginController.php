@@ -13,7 +13,8 @@ class LoginController extends Controller
         }
     public function login(Request $request){
         
-        if(Auth::attempt(['CI' => $request->get('CI'), 'ContraInstructor' => $request->get('ContraInstructor')])){
+        if($instru=Instructor::where('CI',$request->get('CI'))->where('ContraInstructor',$request->get('ContraInstructor'))->first()!=null){
+            
             $instru=Instructor::where('CI',$request->get('CI'))->where('ContraInstructor',$request->get('ContraInstructor'))->first();
             
             if($instru['Admin']==1){
